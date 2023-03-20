@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import Home from './Home';
