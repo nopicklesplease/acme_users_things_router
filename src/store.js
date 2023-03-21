@@ -42,17 +42,9 @@ const usersReducer = (state = [], action)=> {
   return state;
 };
 
-const viewReducer = (state = '', action)=> {
-  if(action.type === 'SET_VIEW'){
-    return action.view; 
-  }
-  return state;
-};
-
 const reducer = combineReducers({
   users: usersReducer,
   things: thingsReducer,
-  view: viewReducer,
   count: countReducer
 });
 

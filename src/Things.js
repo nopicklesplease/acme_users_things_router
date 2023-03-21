@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createThing, updateThing, destroyThing } from './store';
+import { Link } from 'react-router-dom';
 
 const Things = ()=> {
   const { things } = useSelector(state => state);
@@ -52,7 +53,7 @@ const Things = ()=> {
           things.map( thing => {
             return (
               <li key={ thing.id }>
-                { thing.name } ({ thing.rating})
+                <Link to={`/things/${thing.id}`}>{ thing.name }</Link> ({ thing.rating})
                 <button onClick={ ev => destroy(thing)}>x</button>
                 <button onClick={ ()=> increment(thing)}>+</button>
               </li>
