@@ -10,6 +10,7 @@ const Thing = ()=> {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const thing = things.find(thing => thing.id === id);
+  const [rating, setRating] = useState(0)
 
   useEffect(()=> {
     const thing = things.find(thing => thing.id === id);
@@ -29,7 +30,7 @@ const Thing = ()=> {
   const update = async(ev)=> {
     ev.preventDefault();
     try {
-      const updated = { id, name };
+      const updated = { id, name, rating };
       await dispatch(updateThing(updated));
       navigate('/things');
     }
@@ -39,13 +40,27 @@ const Thing = ()=> {
   };
   return (
     <div>
-      <h1>Thing { thing.name }</h1>
+      <h1>Thing { thing.name } ({thing.rating})</h1>
       <p>
         Add some details for things!
       </p>
       <form onSubmit={ update }>
         <input value={ name } onChange={ ev => setName(ev.target.value)}/>
-        <button disabled={ name === thing.name }>Update</button>
+        <div>
+        <select value={ rating } onChange={ ev => setRating(ev.target.value) }>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+          <option value='9'>9</option>
+          <option value='10'>10</option>
+        </select>
+        </div>
+        <button disabled={ name === thing.name && rating === thing.rating }>Update</button>
       </form>
       <button onClick={ ()=> destroy(thing)}>x</button>
     </div>
