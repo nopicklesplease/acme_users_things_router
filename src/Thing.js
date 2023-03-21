@@ -28,9 +28,14 @@ const Thing = ()=> {
 
   const update = async(ev)=> {
     ev.preventDefault();
-    const updated = { id, name };
-    await dispatch(updateThing(updated));
-    navigate('/things');
+    try {
+      const updated = { id, name };
+      await dispatch(updateThing(updated));
+      navigate('/things');
+    }
+    catch(ex){
+      console.log(ex.response.data);
+    }
   };
   return (
     <div>
