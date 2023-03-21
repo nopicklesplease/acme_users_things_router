@@ -85,9 +85,7 @@ export const destroyUser = (user)=> {
 
 export const updateThing = (thing)=> {
   return async(dispatch)=> {
-    const response = await axios.put(`/api/things/${thing.id}`, {
-      rating: thing.rating + 1
-    });
+    const response = await axios.put(`/api/things/${thing.id}`, thing); 
     dispatch({ type: 'UPDATE_THING', thing: response.data });
   };
 };
